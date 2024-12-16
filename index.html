@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Gomitas</title>
+    <style>
+        body {
+            background-color: #F0F0F0;
+            color: #404040;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-header {
+            background-color: #002366;
+            font-size: 0.9rem;
+            padding: 0.5rem 2rem;
+            color: #FFFFFF;
+            border-bottom: 2px solid #FFD700;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .top-header .menu {
+            position: relative;
+        }
+
+        .top-header .menu-title {
+            cursor: pointer;
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .top-header .menu-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            background-color: #002366;
+            border: 1px solid #FFD700;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 10;
+        }
+
+        .top-header .menu-content a {
+            display: block;
+            color: #FFD700;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        .top-header .menu-content a:hover {
+            color: #98FB98;
+        }
+
+        .top-header .menu:hover .menu-content {
+            display: block;
+        }
+
+        header {
+            background-color: #002366;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .form-container input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #98FB98;
+            border-radius: 5px;
+        }
+
+        .form-container input[type="submit"] {
+            padding: 0.5rem 1rem;
+            background-color: #98FB98;
+            color: #002366;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #FFD700;
+        }
+
+        nav {
+            background-color: #F08080;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 2rem;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar .menu {
+            background-color: #FFFFFF;
+            border: 1px solid #98FB98;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar .menu-title {
+            cursor: pointer;
+            font-weight: bold;
+            color: #002366;
+        }
+
+        .sidebar .menu-content {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .sidebar .menu:hover .menu-content {
+            display: block;
+        }
+
+        .content {
+            flex: 3;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .producto {
+            background-color: #FFFFFF;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1 1 calc(45% - 20px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .producto:hover {
+            transform: translateY(-5px);
+        }
+
+        .producto img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+        }
+
+        .producto p {
+            color: #002366;
+            font-weight: bold;
+        }
+
+        .producto button {
+            padding: 0.5rem 1rem;
+            background-color: #F08080;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .producto button:hover {
+            background-color: #FFD700;
+            color: #000000;
+        }
+        
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #404040;
+            color: #FFFFFF;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-header">
+        <div class="menu">
+            <span class="menu-title">Guía de sabores</span>
+            <div class="menu-content">
+                <a href="#">Lista de sabores</a>
+                <a href="#">Combos sugeridos</a>
+            </div>
+        </div>
+        <div class="menu">
+            <span class="menu-title">Opciones</span>
+            <div class="menu-content">
+                <a href="#">Personalización</a>
+                <a href="#">Ayuda</a>
+            </div>
+        </div>
+        <div class="menu">
+            <span class="menu-title">Cambios y devoluciones</span>
+            <div class="menu-content">
+                <a href="#">Política</a>
+                <a href="#">Preguntas frecuentes</a>
+            </div>
+        </div>
+        <div class="menu">
+            <span class="menu-title">Envíos</span>
+            <div class="menu-content">
+                <a href="#">Rastreo</a>
+                <a href="#">Zonas de entrega</a>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <img src="pngtree-gummy-bear-clipart-cute-stuffed-bear-with-ball-of-jujube-candy-png-image_11054329.png" alt="Logo">
+            <span>Sweet Gummies</span>
+        </div>
+        <div class="form-container">
+            <form action="#" method="get">
+                <input type="text" name="buscar" id="buscar" placeholder="Buscar gomitas...">
+                <input type="submit" value="Buscar">
+            </form>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Gomitas</a>
+        <a href="#">Ofertas</a>
+    </nav>
+
+    <main>
+        <div class="sidebar">
+            <div class="menu">
+                <span class="menu-title">Guía de sabores</span>
+                <div class="menu-content">
+                    <a href="#">Lista de sabores</a>
+                    <a href="#">Combos sugeridos</a>
+                </div>
+            </div>
+            <div class="menu">
+                <span class="menu-title">Opciones</span>
+                <div class="menu-content">
+                    <a href="#">Personalización</a>
+                    <a href="#">Ayuda</a>
+                </div>
+            </div>
+            <div class="menu">
+                <span class="menu-title">Cambios y devoluciones</span>
+                <div class="menu-content">
+                    <a href="#">Política</a>
+                    <a href="#">Preguntas frecuentes</a>
+                </div>
+            </div>
+            <div class="menu">
+                <span class="menu-title">Envíos</span>
+                <div class="menu-content">
+                    <a href="#">Rastreo</a>
+                    <a href="#">Zonas de entrega</a>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="producto">
+                <p>Gomitas Surtidas #001</p>
+                <img src="09080227_04.jpg" alt="Gomitas 1">
+                <button>Comprar</button>
+            </div>
+
+            <div class="producto">
+                <p>Gomitas de gusanito #002</p>
+                <img src="images.jpeg" alt="Gomitas 2">
+                <button>Comprar</button>
+            </div>
+            <div class="content">
+                <div class="producto">
+                    <p>Gomitas en forma circular #003</p>
+                    <img src="gumi.jpeg" alt="Gomitas 1">
+                    <button>Comprar</button>
+                </div>
+    
+                <div class="producto">
+                    <p>Gomitas besitos #004</p>
+                    <img src="besos_de_frutilla_fini-foto-2__12660.jpg" alt="Gomitas 2">
+                    <button>Comprar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Creado por Mishel Chinque 2"D"</p>
+    </footer>
+</body>
+
+</html>
